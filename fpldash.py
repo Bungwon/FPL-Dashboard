@@ -125,6 +125,11 @@ app = Dash(
 
 
 app.layout = dbc.Container([
+        dcc.Interval(
+                id='interval-component',
+                interval=86400*1000,  # in milliseconds (24 hours)
+                n_intervals=0
+            ),
         dbc.Row(
             [
                 dbc.Col([
@@ -267,6 +272,7 @@ app.layout = dbc.Container([
     # Input(component_id="dropdown2", component_property="value"),
     # Input(component_id="dropdown3", component_property="value"),
     # Input(component_id="dropdown4", component_property="value"),
+    Input(component_id="interval-component", component_property="n_intervals"),
     Input(component_id='button', component_property='n_clicks'),
     Input(component_id="top_n", component_property="value"),
     State(component_id="positions", component_property="value"),
@@ -274,10 +280,13 @@ app.layout = dbc.Container([
     prevent_initial_call = True
 )
 
-def update_tables(n_clicks, top_n, selected_position, selected_clubs):
+def update_tables(n_intervals, n_clicks, top_n, selected_position, selected_clubs):
 
         if not selected_clubs:
             selected_clubs = []
+
+        if isinstance(selected_clubs, str):
+            selected_clubs = [selected_clubs]
 
         print(f"Selected club: {selected_clubs}, Selected position: {selected_position}")
     
