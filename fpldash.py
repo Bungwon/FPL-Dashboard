@@ -122,7 +122,7 @@ predictions["predicted_points"] = predictions["predicted_points"].astype(float)
 app = Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
-
+server = app.server
 
 app.layout = dbc.Container([
         dcc.Interval(
