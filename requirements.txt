@@ -9,3 +9,4 @@ werkzeug.serving
 
 numpy
 bs4
+gunicorn
