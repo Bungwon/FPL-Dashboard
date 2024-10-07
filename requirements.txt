@@ -1,7 +1,7 @@
-dash
+dash==2.18.1
 dash_bootstrap_components
 pandas
-plotly.express
+plotly
 dash_ag_grid
 
 socket
